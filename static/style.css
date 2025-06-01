@@ -1,7 +1,72 @@
 /*my style stuff*/
 body {
-    font-family: sans-serif;
-    padding: 2rem;
-    background: #0f172a;
-    color: white;
+    background-color: #0f172a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
+  
+  .container {
+    background-color: #1e293b;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+    text-align: center;
+    width: 90%;
+    max-width: 480px;
+  }
+  
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #38bdf8;
+  }
+  
+  input[type="file"] {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    border-radius: 6px;
+    width: 100%;
+  }
+  
+  button {
+    margin-top: 1.2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #38bdf8;
+    color: #0f172a;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0ea5e9;
+  }
+  
+  .note {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 1.5rem;
+  }
+
+  .watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    font-size: 1rem;
+    color: #475569;
+    user-select: none;
+    pointer-events: none;
+  }
+  
+  

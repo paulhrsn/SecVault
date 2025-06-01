@@ -1,16 +1,26 @@
 <!--my main page-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Secure File Vault</title>
-  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-  <h1>Secure File Vault</h1>
+  <div class="container">
+    <h1>🔐SecVault🔐</h1>
+    <p>Encrypt and upload your file securely with this secure file vault.</p>
+    
+    <input type="file" id="fileInput" />
+    <button onclick="encryptAndUpload()">Encrypt & Upload</button>
 
-  <input type="file" id="fileInput">
-  <button onclick="encryptAndUpload()">Encrypt & Upload</button>
+    <p class="note">Your file is encrypted in your browser before it ever touches the server.</p>
+  </div>
 
   <script src="/static/main.js"></script>
+
+  <div class="watermark">© 2025 Paul Harrison — SecVault</div>
+
 </body>
 </html>
