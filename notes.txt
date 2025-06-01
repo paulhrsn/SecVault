@@ -1,0 +1,1 @@
+source venv/bin/activate -> run this every time to not mess with system-wide python stuff
