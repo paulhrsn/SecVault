@@ -5,20 +5,142 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Secure File Vault</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* center everything in the page */
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: sans-serif;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+    }
+
+    .main-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .container {
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      background-color: #38bdf8;
+      color: #000;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    .watermark {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🔐SecVault🔐</h1>
-    <p>Encrypt and upload your file securely with this secure file vault.</p>
-    
-    <input type="file" id="fileInput" />
-    <button onclick="encryptAndUpload()">Encrypt & Upload</button>
+  <!-- centered page title -->
+  <h1>🔐SecVault🔐</h1>
 
-    <p class="note">Your file is encrypted in your browser before it ever touches the server.</p>
+  <!-- main layout for encrypt + decrypt -->
+  <div class="main-wrapper">
+
+    <!-- encrypt section -->
+    <div class="container">
+      <h2>Encrypt & Upload</h2>
+      <p>Select a file to encrypt and upload securely.</p>
+
+      <input type="file" id="fileInput" />
+      <button onclick="encryptAndUpload()">Encrypt & Upload</button>
+
+      <p class="note">Your file is encrypted in your browser before it ever touches the server.</p>
+    </div>
+
+    <!-- decrypt section -->
+    <div class="container">
+      <h2>Decrypt & Download</h2>
+      <p>Select your encrypted file (.enc) and key file (.key).</p>
+
+      <input type="file" id="encFileInput" />
+      <input type="file" id="keyFileInput" style="margin-top: 0.5rem;" />
+      <button onclick="decryptAndDownload()">Decrypt & Download</button>
+    </div>
+
   </div>
 
+  <!-- footer -->
+  <div class="watermark">© 2025 Paul Harrison — SecVault</div>
+
+  <!-- encryption script -->
   <script src="main.js"></script>
 
-  <div class="watermark">© 2025 Paul Harrison — SecVault</div>
+  <!-- decryption script -->
+  <script>
+    async function decryptAndDownload() {
+      const encFileInput = document.getElementById("encFileInput");
+      const keyFileInput = document.getElementById("keyFileInput");
+
+      if (!encFileInput.files[0] || !keyFileInput.files[0]) {
+        alert("please select both encrypted and key files.");
+        return;
+      }
+
+      const encBuffer = await encFileInput.files[0].arrayBuffer();
+      const keyBuffer = await keyFileInput.files[0].arrayBuffer();
+
+      const key = await crypto.subtle.importKey(
+        "raw",
+        keyBuffer,
+        { name: "AES-GCM" },
+        false,
+        ["decrypt"]
+      );
+
+      const iv = new Uint8Array(encBuffer.slice(0, 12));
+      const ciphertext = encBuffer.slice(12);
+
+      try {
+        const decrypted = await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv },
+          key,
+          ciphertext
+        );
+
+        const blob = new Blob([decrypted]);
+        const downloadUrl = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = downloadUrl;
+        a.download = encFileInput.files[0].name.replace(/\.enc$/, "");
+        a.click();
+      } catch (err) {
+        console.error("decryption failed:", err);
+        alert("failed to decrypt. make sure you're using the correct key.");
+      }
+    }
+  </script>
 </body>
 </html>
