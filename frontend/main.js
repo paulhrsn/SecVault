@@ -42,11 +42,21 @@ URL.revokeObjectURL(keyUrl); // cleanup
       body: formData,
     });
     ;
-  
     if (res.ok) {
-      alert("Encrypted file uploaded!");
+      // let user also download the encrypted file they just uploaded
+      const encryptedUrl = URL.createObjectURL(blob);
+      const encLink = document.createElement("a");
+      encLink.href = encryptedUrl;
+      encLink.download = file.name + ".enc";
+      document.body.appendChild(encLink);
+      encLink.click();
+      document.body.removeChild(encLink);
+      URL.revokeObjectURL(encryptedUrl); // cleanup
+    
+      alert("encrypted file uploaded and saved locally!");
     } else {
-      alert("Upload failed");
+      alert("upload failed");
     }
+    
   }
   
