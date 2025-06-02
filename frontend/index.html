@@ -23,14 +23,20 @@
       <p class="note">Your file is encrypted in your browser before it ever touches the server.</p>
     </div>
 
-    <!-- decrypt section on the right -->
-    <div class="container">
-      <h2>Decrypt & Download</h2>
-      <p>Select your encrypted file (.enc) and key file (.key).</p>
-      <input type="file" id="encFileInput" />
-      <input type="file" id="keyFileInput" />
-      <button onclick="decryptAndDownload()">Decrypt & Download</button>
-    </div>
+   <!-- decrypt section on the right -->
+<div class="container">
+  <h2>Decrypt & Download</h2>
+  <p>to decrypt your file, upload the encrypted version and the matching key file</p>
+
+  <label for="encFileInput">🔐 encrypted file (.enc):</label><br />
+  <input type="file" id="encFileInput" /><br /><br />
+
+  <label for="keyFileInput">🗝️ key file (.key):</label><br />
+  <input type="file" id="keyFileInput" /><br /><br />
+
+  <button onclick="decryptAndDownload()">decrypt & download</button>
+</div>
+
 
   </div>
 
