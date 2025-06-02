@@ -1,94 +1,78 @@
-/* general layout */
 body {
   margin: 0;
   padding: 0;
-  background-color: #0f172a;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f172a; /* dark navy background */
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   min-height: 100vh;
 }
 
-/* main title */
 h1 {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   margin-top: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
-/* wrapper around the encrypt + decrypt cards */
-.main-wrapper {
+.container-wrapper {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 4rem;
-  margin-top: 1rem;
+  margin: 2rem;
 }
 
-/* cards */
 .container {
-  background-color: #1e293b;
-  padding: 2rem 2.5rem;
+  background-color: #1e293b; /* slightly lighter navy */
+  padding: 2.5rem;
   border-radius: 1.5rem;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-  width: 350px;
-  max-width: 90vw;
-}
-
-/* button styling */
-button {
-  background-color: #38bdf8;
-  color: #0f172a;
-  font-weight: 600;
-  padding: 0.75rem 1.25rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: all 0.2s ease-in-out;
-}
-
-button:hover {
-  background-color: #0ea5e9;
-  transform: scale(1.03);
-}
-
-/* form inputs and labels */
-input[type="file"] {
-  margin-top: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  max-width: 370px;
   width: 100%;
-  background: #0f172a;
-  color: white;
-  border: none;
-  padding: 0.5rem 0;
 }
 
-/* section-specific heading spacing */
 .container h2 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 .container p {
-  font-size: 0.9rem;
-  color: #cbd5e1;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
 }
 
-/* watermark */
+input[type="file"] {
+  width: 100%;
+  margin: 0.4rem 0;
+  padding: 0.5rem;
+  background-color: #0f172a;
+  border: none;
+  color: #fff;
+}
+
+button {
+  background-color: #0ea5e9; /* cyan-blue */
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0284c7;
+}
+
 .watermark {
-  margin-top: 4rem;
+  margin-top: auto;
+  margin-bottom: 2rem;
   font-size: 0.85rem;
   color: #94a3b8;
   text-align: center;
-}
-
-/* mobile stacking */
-@media (max-width: 800px) {
-  .main-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
 }
