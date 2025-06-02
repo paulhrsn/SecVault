@@ -1,0 +1,19 @@
+# Ignore Python cache and environment files
+__pycache__/
+*.pyc
+
+# Ignore virtual environments
+env/
+venv/
+.venv/
+
+# Ignore uploads (user files)
+uploads/
+
+# Ignore OS or editor junk
+.DS_Store
+*.swp
+
+# Optional: Ignore Netlify or build artifacts if ever needed
+dist/
+build/
