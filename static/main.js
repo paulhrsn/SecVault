@@ -22,10 +22,13 @@ async function encryptAndUpload() {
     const formData = new FormData();
     formData.append("file", blob, file.name + ".enc");
   
-    const res = await fetch("/upload", {
+    const BACKEND_URL = "https://secvault-backend.onrender.com"; // actual Render backend URL
+
+    const res = await fetch(`${BACKEND_URL}/upload`, {
       method: "POST",
-      body: formData
+      body: formData,
     });
+    ;
   
     if (res.ok) {
       alert("Encrypted file uploaded!");
