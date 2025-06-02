@@ -8,6 +8,19 @@ async function encryptAndUpload() {
       true,
       ["encrypt", "decrypt"]
     );
+
+    // convert the key to raw bytes
+const rawKey = await crypto.subtle.exportKey("raw", key);
+const keyBlob = new Blob([rawKey]);
+const keyUrl = URL.createObjectURL(keyBlob);
+const keyLink = document.createElement("a");
+keyLink.href = keyUrl;
+keyLink.download = file.name + ".key"; // match file name
+// add it to the DOM, trigger download, then remove
+document.body.appendChild(keyLink);
+keyLink.click();
+document.body.removeChild(keyLink);
+URL.revokeObjectURL(keyUrl); // cleanup
   
     const iv = crypto.getRandomValues(new Uint8Array(12));
     const fileBuffer = await file.arrayBuffer();
