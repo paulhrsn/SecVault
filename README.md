@@ -4,7 +4,7 @@ This is a secure file vault web app for uploading, encrypting, and decrypting fi
 
 --
 
-**Live Site**: [secvault.netlify.app](https://secvault.netlify.app)
+**Live Site**: [secvault-app.netlify.app](https://secvault-app.netlify.app/)
 
 ---
 
