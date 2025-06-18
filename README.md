@@ -2,6 +2,10 @@
 
 This is a secure file vault web app for uploading, encrypting, and decrypting files all within your browser using AES-GCM (industry-standard symmetric encryption). Built with Flask + WebCrypto.
 
+--
+
+**Live Site**: [secvault.netlify.app](https://secvault.netlify.app)
+
 ---
 
 ## Features
