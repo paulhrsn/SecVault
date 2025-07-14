@@ -12,7 +12,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 def index():
-    return 'SecVault backend is running!'  #test response
+    return 'SecVault backend is running!'  #test response.
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
